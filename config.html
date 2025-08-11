@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="stylesConfig.css" />
+  <title>Menú de Configuración</title>
+</head>
+
+<body>
+  <ul>
+    <li>
+      <a href="index.html">Home</a>
+    </li>
+
+    <!-- MODIFICAR NOMBRE DEL USUARIO -->
+    <li>
+      <input type="checkbox" id="toggle-username" class="toggle-checkbox" />
+      <label for="toggle-username" class="toggle-label">
+        Modificar Nombre del Usuario
+      </label>
+      <ul class="dropdown">
+        <li>
+          <label for="username">Nuevo nombre</label>
+          <input type="text" id="username" name="username" />
+          <button>Aceptar</button>
+        </li>
+      </ul>
+    </li>
+
+    <!-- MODIFICAR CORREO DEL USUARIO -->
+    <li>
+      <input type="checkbox" id="toggle-mail" class="toggle-checkbox2" />
+      <label for="toggle-mail" class="toggle-label2">
+        Modificar Correo del Usuario
+      </label>
+      <ul class="dropdown2">
+        <li>
+          <label for="mail">Nuevo correo</label>
+          <input type="text" id="mail" name="mail" />
+          <button>Aceptar</button>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</body>
+
+</html>

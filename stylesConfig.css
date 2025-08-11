@@ -1,0 +1,81 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+body {
+  background-color: #32324c;
+}
+
+ul {
+  list-style: none;
+  background: #fff;
+}
+
+ul li {
+  display: block;
+  position: relative;
+}
+
+
+ul li a,
+.toggle-label,
+.toggle-label2 {
+  display: block;
+  padding: 20px 25px;
+  color: #000;
+  text-decoration: none;
+  text-align: center;
+  font-weight: bold;
+  background: #f0f0f0;
+  cursor: pointer;
+}
+
+/* Hover y estado activo */
+ul li a:hover,
+.toggle-checkbox:checked+.toggle-label,
+.toggle-checkbox2:checked+.toggle-label2 {
+  background: #000021;
+  color: #fff;
+}
+
+/*Ocultando el contenido de los dropdown*/
+ul li ul.dropdown,
+ul li ul.dropdown2 {
+  display: none;
+  /* MODIFICADO: eliminadas position:absolute, top, left y z-index para mantener en flujo normal */
+}
+
+/*Checkhack*/
+.toggle-checkbox:checked+.toggle-label+ul.dropdown,
+.toggle-checkbox2:checked+.toggle-label2+ul.dropdown2 {
+  display: block;
+}
+
+/*Oculta el checkbox que dispara */
+.toggle-checkbox,
+.toggle-checkbox2 {
+  display: none;
+}
+
+/* 8. Asegura que el label reciba el clic */
+.toggle-label,
+.toggle-label2 {
+  position: relative;
+  z-index: 2;
+}
+
+/* 9. Estilos internos del dropdown */
+.dropdown li,
+.dropdown2 li {
+  padding: 15px;
+  border-bottom: 1px solid #ddd;
+}
+
+.dropdown input,
+.dropdown button,
+.dropdown2 input,
+.dropdown2 button {
+  margin-top: 8px;
+}
