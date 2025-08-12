@@ -9,57 +9,62 @@
 </head>
 
 <body>
+  <div class="main-content">
+    <header class="header">
+      <button class="home-btn">Home</button>
+      <button class="log-btn">Log out</button>
+      <img src="img/Logo_SL.png" alt="logo" class="logo">
+    </header>
 
-  <header class="header">
-    <button class="home-btn">Home</button>
-    <button class="log-btn">Log out</button>
-    <img src="img/Logo_SL.png" alt="logo" class="logo">
-  </header>
+    <ul>
+      <li>
+        <a href="index.html" class="a-perfil">Perfil</a>
+      </li>
 
-  <ul>
-    <li>
-      <a href="index.html">Perfil</a>
-    </li>
+      <!-- MODIFICAR NOMBRE -->
+      <li>
+        <input type="checkbox" id="toggle-username" class="toggle-checkbox" />
+        <label for="toggle-username" class="toggle-label"> Modificar nombre del usuario... </label>
+        <ul class="dropdown">
+          <li>
+            <label for="username">Nuevo nombre</label>
+            <input type="text" id="username" name="username" />
+            <button>Aceptar</button>
+          </li>
+        </ul>
+      </li>
 
-    <!-- MODIFICAR NOMBRE -->
-    <li>
-      <input type="checkbox" id="toggle-username" class="toggle-checkbox" />
-      <label for="toggle-username" class="toggle-label"> Modificar nombre del usuario </label>
-      <ul class="dropdown">
-        <li>
-          <label for="username">Nuevo nombre</label>
-          <input type="text" id="username" name="username" />
-          <button>Aceptar</button>
-        </li>
-      </ul>
-    </li>
+      <!-- MODIFICAR CORREO -->
+      <li>
+        <input type="checkbox" id="toggle-mail" class="toggle-checkbox2" />
+        <label for="toggle-mail" class="toggle-label2"> Modificar correo del usuario... </label>
+        <ul class="dropdown2">
+          <li>
+            <label for="mail">Nuevo correo</label>
+            <input type="text" id="mail" name="mail" />
+            <button>Aceptar</button>
+          </li>
+        </ul>
+      </li>
 
-    <!-- MODIFICAR CORREO -->
-    <li>
-      <input type="checkbox" id="toggle-mail" class="toggle-checkbox2" />
-      <label for="toggle-mail" class="toggle-label2"> Modificar correo del usuario </label>
-      <ul class="dropdown2">
-        <li>
-          <label for="mail">Nuevo correo</label>
-          <input type="text" id="mail" name="mail" />
-          <button>Aceptar</button>
-        </li>
-      </ul>
-    </li>
+      <!--MODIFICAR BIOGRAFIA -->
+      <li>
+        <input type="checkbox" id="toggle-bio" class="toggle-checkbox3" />
+        <label for="toggle-bio" class="toggle-label3"> Modificar biografía del usuario... </label>
+        <ul class="dropdown3">
+          <li>
+            <label for="bio">Biografia</label>
+            <textarea class="bio" placeholder="Escribe tu biografía..."></textarea>
+            <button>Aceptar</button>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <div class="footer">
+  </div>
 
-    <!--MODIFICAR BIOGRAFIA -->
-    <li>
-      <input type="checkbox" id="toggle-bio" class="toggle-checkbox3" />
-      <label for="toggle-bio" class="toggle-label3"> Modificar biografía del usuario </label>
-      <ul class="dropdown3">
-        <li>
-          <label for="bio">Biografia</label>
-          <input type="text" name="bio" id="bio">
-          <button>Aceptar</button>
-        </li>
-      </ul>
-    </li>
-  </ul>
 </body>
+
 
 </html>
