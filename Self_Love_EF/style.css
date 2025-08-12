@@ -1,0 +1,119 @@
+﻿/* Header general */
+header {
+    width: 100%;
+    background-color: #f8f9fa;
+    padding: 10px 20px;
+    border-bottom: 1px solid #dee2e6;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+/* Columna izquierda con título y botones */
+.left-column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    flex: 1;
+}
+
+/* Título */
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    margin: 0;
+}
+
+/* Botones */
+.auth-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+    .auth-buttons .btn {
+        border: 2px solid black; /* Borde negro */
+        border-radius: 5px;
+        padding: 8px 15px;
+        font-weight: bold;
+        cursor: pointer;
+        text-decoration: none;
+        color: black; /* ← Texto negro por defecto */
+    }
+
+    /* Botón "Log In" blanco */
+    .auth-buttons .btn-white {
+        background-color: white;
+    }
+
+        .auth-buttons .btn-white:hover {
+            background-color: #f2f2f2;
+        }
+
+    /* Botón "Sign In" rosa pastel */
+    .auth-buttons .btn-blue {
+        background-color: #f8c8dc; /* Rosa pastel */
+    }
+
+        .auth-buttons .btn-blue:hover {
+            background-color: #f8c8dc;
+        }
+
+/* Menú centrado */
+.center-nav {
+    flex: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 30px;
+}
+
+    nav ul li a {
+        text-decoration: none;
+        color: #333;
+        font-weight: bold;
+    }
+
+        nav ul li a:hover {
+            color: #007bff;
+        }
+
+/* Responsive */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .left-column {
+        align-items: center;
+        text-align: center;
+    }
+
+    .auth-buttons {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .center-nav nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+.carousel-img {
+    width: 50%;
+    height: auto;
+    margin: 0 auto;
+    border-radius: 10px;
+}

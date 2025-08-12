@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3caae42616854ea18e14dda126646350" Name="Diagram1">
+        <EntityTypeShape EntityType="SelfLoveBDModel.Comentarios" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SelfLoveBDModel.Emociones" Width="1.5" PointX="3" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SelfLoveBDModel.Habitos" Width="1.5" PointX="3.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SelfLoveBDModel.Publicaciones" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SelfLoveBDModel.Recursos" Width="1.5" PointX="5.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SelfLoveBDModel.SeguimientoHabitos" Width="1.5" PointX="6" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SelfLoveBDModel.Usuarios" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
+        <AssociationConnector Association="SelfLoveBDModel.FK__Comentari__IdPub__4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="SelfLoveBDModel.FK__Comentari__IdUsu__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="SelfLoveBDModel.FK__Emociones__IdUsu__45F365D3" ManuallyRouted="false" />
+        <AssociationConnector Association="SelfLoveBDModel.FK__Seguimien__IdHab__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="SelfLoveBDModel.FK__Seguimien__IdUsu__412EB0B6" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="SelfLoveBDModel.Psicologos" Width="1.5" PointX="5.375" PointY="7.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

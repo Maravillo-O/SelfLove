@@ -1,0 +1,15 @@
+# Archivos de Visual Studio
+.vs/
+*.user
+*.suo
+
+# Archivos compilados
+bin/
+obj/
+
+# Paquetes de NuGet
+packages/
+
+# Archivos temporales
+*.tmp
+*.log

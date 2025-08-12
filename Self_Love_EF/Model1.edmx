@@ -1,0 +1,482 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SelfLoveBDModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Comentarios">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdUsuario" Type="int" />
+          <Property Name="IdPublicacion" Type="int" />
+          <Property Name="Contenido" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="FechaComentario" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Emociones">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdUsuario" Type="int" />
+          <Property Name="Fecha" Type="date" />
+          <Property Name="Emocion" Type="nvarchar" MaxLength="20" />
+          <Property Name="Nota" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Habitos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar(max)" />
+          <Property Name="Categoria" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Psicologos">
+          <Key>
+            <PropertyRef Name="PsicologoID" />
+          </Key>
+          <Property Name="PsicologoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Apellidos" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Correo" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Contrasena" Type="nvarchar" MaxLength="100" />
+          <Property Name="Especialidad" Type="nvarchar" MaxLength="100" />
+          <Property Name="FechaRegistro" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Publicaciones">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Titulo" Type="nvarchar" MaxLength="150" />
+          <Property Name="Contenido" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Autor" Type="nvarchar" MaxLength="100" />
+          <Property Name="FechaPublicacion" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Recursos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Titulo" Type="nvarchar" MaxLength="150" />
+          <Property Name="Tipo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Enlace" Type="nvarchar(max)" />
+          <Property Name="Descripcion" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="SeguimientoHabitos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdUsuario" Type="int" />
+          <Property Name="IdHabito" Type="int" />
+          <Property Name="Fecha" Type="date" />
+          <Property Name="Cumplido" Type="bit" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Correo" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Contrasena" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="FechaRegistro" Type="date" />
+        </EntityType>
+        <Association Name="FK__Comentari__IdPub__4D94879B">
+          <End Role="Publicaciones" Type="Self.Publicaciones" Multiplicity="0..1" />
+          <End Role="Comentarios" Type="Self.Comentarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Publicaciones">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Comentarios">
+              <PropertyRef Name="IdPublicacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Comentari__IdUsu__4CA06362">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
+          <End Role="Comentarios" Type="Self.Comentarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Comentarios">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Emociones__IdUsu__45F365D3">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
+          <End Role="Emociones" Type="Self.Emociones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Emociones">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Seguimien__IdHab__4222D4EF">
+          <End Role="Habitos" Type="Self.Habitos" Multiplicity="0..1" />
+          <End Role="SeguimientoHabitos" Type="Self.SeguimientoHabitos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Habitos">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SeguimientoHabitos">
+              <PropertyRef Name="IdHabito" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Seguimien__IdUsu__412EB0B6">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
+          <End Role="SeguimientoHabitos" Type="Self.SeguimientoHabitos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SeguimientoHabitos">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SelfLoveBDModelStoreContainer">
+          <EntitySet Name="Comentarios" EntityType="Self.Comentarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Emociones" EntityType="Self.Emociones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Habitos" EntityType="Self.Habitos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Psicologos" EntityType="Self.Psicologos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Publicaciones" EntityType="Self.Publicaciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Recursos" EntityType="Self.Recursos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SeguimientoHabitos" EntityType="Self.SeguimientoHabitos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Comentari__IdPub__4D94879B" Association="Self.FK__Comentari__IdPub__4D94879B">
+            <End Role="Publicaciones" EntitySet="Publicaciones" />
+            <End Role="Comentarios" EntitySet="Comentarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Comentari__IdUsu__4CA06362" Association="Self.FK__Comentari__IdUsu__4CA06362">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Comentarios" EntitySet="Comentarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Emociones__IdUsu__45F365D3" Association="Self.FK__Emociones__IdUsu__45F365D3">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Emociones" EntitySet="Emociones" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Seguimien__IdHab__4222D4EF" Association="Self.FK__Seguimien__IdHab__4222D4EF">
+            <End Role="Habitos" EntitySet="Habitos" />
+            <End Role="SeguimientoHabitos" EntitySet="SeguimientoHabitos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Seguimien__IdUsu__412EB0B6" Association="Self.FK__Seguimien__IdUsu__412EB0B6">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="SeguimientoHabitos" EntitySet="SeguimientoHabitos" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SelfLoveBDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Comentarios">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdUsuario" Type="Int32" />
+          <Property Name="IdPublicacion" Type="Int32" />
+          <Property Name="Contenido" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FechaComentario" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Publicaciones" Relationship="Self.FK__Comentari__IdPub__4D94879B" FromRole="Comentarios" ToRole="Publicaciones" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.FK__Comentari__IdUsu__4CA06362" FromRole="Comentarios" ToRole="Usuarios" />
+        </EntityType>
+        <EntityType Name="Emociones">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdUsuario" Type="Int32" />
+          <Property Name="Fecha" Type="DateTime" Precision="0" />
+          <Property Name="Emocion" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Nota" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.FK__Emociones__IdUsu__45F365D3" FromRole="Emociones" ToRole="Usuarios" />
+        </EntityType>
+        <EntityType Name="Habitos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Categoria" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="SeguimientoHabitos" Relationship="Self.FK__Seguimien__IdHab__4222D4EF" FromRole="Habitos" ToRole="SeguimientoHabitos" />
+        </EntityType>
+        <EntityType Name="Publicaciones">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Titulo" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Contenido" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Autor" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FechaPublicacion" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Comentarios" Relationship="Self.FK__Comentari__IdPub__4D94879B" FromRole="Publicaciones" ToRole="Comentarios" />
+        </EntityType>
+        <EntityType Name="Recursos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Titulo" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Enlace" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="SeguimientoHabitos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdUsuario" Type="Int32" />
+          <Property Name="IdHabito" Type="Int32" />
+          <Property Name="Fecha" Type="DateTime" Precision="0" />
+          <Property Name="Cumplido" Type="Boolean" />
+          <NavigationProperty Name="Habitos" Relationship="Self.FK__Seguimien__IdHab__4222D4EF" FromRole="SeguimientoHabitos" ToRole="Habitos" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.FK__Seguimien__IdUsu__412EB0B6" FromRole="SeguimientoHabitos" ToRole="Usuarios" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Correo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Contrasena" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FechaRegistro" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Comentarios" Relationship="Self.FK__Comentari__IdUsu__4CA06362" FromRole="Usuarios" ToRole="Comentarios" />
+          <NavigationProperty Name="Emociones" Relationship="Self.FK__Emociones__IdUsu__45F365D3" FromRole="Usuarios" ToRole="Emociones" />
+          <NavigationProperty Name="SeguimientoHabitos" Relationship="Self.FK__Seguimien__IdUsu__412EB0B6" FromRole="Usuarios" ToRole="SeguimientoHabitos" />
+        </EntityType>
+        <Association Name="FK__Comentari__IdPub__4D94879B">
+          <End Role="Publicaciones" Type="Self.Publicaciones" Multiplicity="0..1" />
+          <End Role="Comentarios" Type="Self.Comentarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Publicaciones">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Comentarios">
+              <PropertyRef Name="IdPublicacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Comentari__IdUsu__4CA06362">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
+          <End Role="Comentarios" Type="Self.Comentarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Comentarios">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Emociones__IdUsu__45F365D3">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
+          <End Role="Emociones" Type="Self.Emociones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Emociones">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Seguimien__IdHab__4222D4EF">
+          <End Role="Habitos" Type="Self.Habitos" Multiplicity="0..1" />
+          <End Role="SeguimientoHabitos" Type="Self.SeguimientoHabitos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Habitos">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SeguimientoHabitos">
+              <PropertyRef Name="IdHabito" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Seguimien__IdUsu__412EB0B6">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
+          <End Role="SeguimientoHabitos" Type="Self.SeguimientoHabitos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SeguimientoHabitos">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SelfLoveBDEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Comentarios" EntityType="Self.Comentarios" />
+          <EntitySet Name="Emociones" EntityType="Self.Emociones" />
+          <EntitySet Name="Habitos" EntityType="Self.Habitos" />
+          <EntitySet Name="Publicaciones" EntityType="Self.Publicaciones" />
+          <EntitySet Name="Recursos" EntityType="Self.Recursos" />
+          <EntitySet Name="SeguimientoHabitos" EntityType="Self.SeguimientoHabitos" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
+          <AssociationSet Name="FK__Comentari__IdPub__4D94879B" Association="Self.FK__Comentari__IdPub__4D94879B">
+            <End Role="Publicaciones" EntitySet="Publicaciones" />
+            <End Role="Comentarios" EntitySet="Comentarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Comentari__IdUsu__4CA06362" Association="Self.FK__Comentari__IdUsu__4CA06362">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Comentarios" EntitySet="Comentarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Emociones__IdUsu__45F365D3" Association="Self.FK__Emociones__IdUsu__45F365D3">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Emociones" EntitySet="Emociones" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Seguimien__IdHab__4222D4EF" Association="Self.FK__Seguimien__IdHab__4222D4EF">
+            <End Role="Habitos" EntitySet="Habitos" />
+            <End Role="SeguimientoHabitos" EntitySet="SeguimientoHabitos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Seguimien__IdUsu__412EB0B6" Association="Self.FK__Seguimien__IdUsu__412EB0B6">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="SeguimientoHabitos" EntitySet="SeguimientoHabitos" />
+          </AssociationSet>
+          <EntitySet Name="Psicologos" EntityType="SelfLoveBDModel.Psicologos" />
+        </EntityContainer>
+        <EntityType Name="Psicologos">
+          <Key>
+            <PropertyRef Name="PsicologoID" />
+          </Key>
+          <Property Name="PsicologoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Apellidos" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Correo" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Contrasena" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Especialidad" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FechaRegistro" Type="DateTime" Precision="3" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SelfLoveBDModelStoreContainer" CdmEntityContainer="SelfLoveBDEntities">
+          <EntitySetMapping Name="Comentarios">
+            <EntityTypeMapping TypeName="SelfLoveBDModel.Comentarios">
+              <MappingFragment StoreEntitySet="Comentarios">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="IdPublicacion" ColumnName="IdPublicacion" />
+                <ScalarProperty Name="Contenido" ColumnName="Contenido" />
+                <ScalarProperty Name="FechaComentario" ColumnName="FechaComentario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Emociones">
+            <EntityTypeMapping TypeName="SelfLoveBDModel.Emociones">
+              <MappingFragment StoreEntitySet="Emociones">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Emocion" ColumnName="Emocion" />
+                <ScalarProperty Name="Nota" ColumnName="Nota" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Habitos">
+            <EntityTypeMapping TypeName="SelfLoveBDModel.Habitos">
+              <MappingFragment StoreEntitySet="Habitos">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Publicaciones">
+            <EntityTypeMapping TypeName="SelfLoveBDModel.Publicaciones">
+              <MappingFragment StoreEntitySet="Publicaciones">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+                <ScalarProperty Name="Contenido" ColumnName="Contenido" />
+                <ScalarProperty Name="Autor" ColumnName="Autor" />
+                <ScalarProperty Name="FechaPublicacion" ColumnName="FechaPublicacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Recursos">
+            <EntityTypeMapping TypeName="SelfLoveBDModel.Recursos">
+              <MappingFragment StoreEntitySet="Recursos">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Enlace" ColumnName="Enlace" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SeguimientoHabitos">
+            <EntityTypeMapping TypeName="SelfLoveBDModel.SeguimientoHabitos">
+              <MappingFragment StoreEntitySet="SeguimientoHabitos">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="IdHabito" ColumnName="IdHabito" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Cumplido" ColumnName="Cumplido" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="SelfLoveBDModel.Usuarios">
+              <MappingFragment StoreEntitySet="Usuarios">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Contrasena" ColumnName="Contrasena" />
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Psicologos">
+            <EntityTypeMapping TypeName="SelfLoveBDModel.Psicologos">
+              <MappingFragment StoreEntitySet="Psicologos">
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+                <ScalarProperty Name="Especialidad" ColumnName="Especialidad" />
+                <ScalarProperty Name="Contrasena" ColumnName="Contrasena" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="PsicologoID" ColumnName="PsicologoID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
