@@ -4,13 +4,50 @@
   font-family: sans-serif;
 }
 
+.header {
+  display: flex;
+  height: 65px;
+  background-color: rgb(241, 239, 250);
+  margin-bottom: 10px;
+  align-items: center;
+}
+
+.header img.logo {
+  width: 50px;
+  height: auto;
+  display: block;
+  margin-left: -1485px;
+
+
+}
+
+.header button {
+  padding: 8px 15px;
+  text-align: center;
+  margin-top: 10px;
+  border-radius: 15%;
+  border-width: 2px;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.home-btn {
+  margin-left: 1350px;
+}
+
+.log-btn {
+  margin-left: 10px;
+  background-color: RGB(248, 200, 220);
+}
+
+/*#32324c*/
 body {
-  background-color: #32324c;
+  background-color: #fff;
 }
 
 ul {
   list-style: none;
-  background: #fff;
+  background: pink;
 }
 
 ul li {
@@ -21,7 +58,8 @@ ul li {
 
 ul li a,
 .toggle-label,
-.toggle-label2 {
+.toggle-label2,
+.toggle-label3 {
   display: block;
   padding: 20px 25px;
   color: #000;
@@ -35,40 +73,45 @@ ul li a,
 /* Hover y estado activo */
 ul li a:hover,
 .toggle-checkbox:checked+.toggle-label,
-.toggle-checkbox2:checked+.toggle-label2 {
+.toggle-checkbox2:checked+.toggle-label2,
+.toggle-checkbox3:checked+.toggle-label3 {
   background: #000021;
   color: #fff;
 }
 
 /*Ocultando el contenido de los dropdown*/
 ul li ul.dropdown,
-ul li ul.dropdown2 {
+ul li ul.dropdown2,
+ul li ul.dropdown3 {
   display: none;
-  /* MODIFICADO: eliminadas position:absolute, top, left y z-index para mantener en flujo normal */
 }
 
 /*Checkhack*/
 .toggle-checkbox:checked+.toggle-label+ul.dropdown,
-.toggle-checkbox2:checked+.toggle-label2+ul.dropdown2 {
+.toggle-checkbox2:checked+.toggle-label2+ul.dropdown2,
+.toggle-checkbox3:checked+.toggle-label3+ul.dropdown3 {
   display: block;
 }
 
-/*Oculta el checkbox que dispara */
+/*Oculta el "estilo" del checkbox default */
 .toggle-checkbox,
-.toggle-checkbox2 {
+.toggle-checkbox2,
+.toggle-checkbox3 {
   display: none;
 }
 
 /* 8. Asegura que el label reciba el clic */
 .toggle-label,
-.toggle-label2 {
+.toggle-label2,
+.toggle-label3 {
   position: relative;
   z-index: 2;
 }
 
 /* 9. Estilos internos del dropdown */
 .dropdown li,
-.dropdown2 li {
+.dropdown2 li,
+.dropdown3 li {
   padding: 15px;
   border-bottom: 1px solid #ddd;
 }
@@ -76,6 +119,22 @@ ul li ul.dropdown2 {
 .dropdown input,
 .dropdown button,
 .dropdown2 input,
-.dropdown2 button {
+.dropdown2 button,
+.dropdown3 input,
+.dropdown3 button {
   margin-top: 8px;
+  margin-left: 8px;
+}
+
+.dropdown button,
+.dropdown2 button,
+.dropdown3 button {
+  padding: 5px;
+  cursor: pointer;
+}
+
+.dropdown label,
+.dropdown2 label,
+.dropdown3 label {
+  color: #fff;
 }
