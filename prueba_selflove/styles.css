@@ -1,0 +1,163 @@
+﻿/* Fuente y fondo general */
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(to right, rgb(248, 200, 220), rgb(205, 117, 255), rgb(255, 228, 145));
+    margin: 0;
+    padding: 2rem;
+    color: #333;
+}
+
+/* Formulario centrado */
+form {
+    max-width: 700px;
+    margin: auto;
+    background: rgb(248, 200, 220); /* fondo rosa pastel */
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    animation: fadeIn 0.8s ease-in-out;
+}
+/* Contenedor de cada pregunta */
+.pregunta {
+    margin-bottom: 2rem;
+    padding: 1rem;
+    border-radius: 8px;
+    background: rgb(248, 200, 220); /* fondo rosa pastel */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    transition: opacity 0.5s ease;
+}
+
+/* Etiquetas ASP.NET */
+asp\:Label {
+    font-weight: 600;
+    font-size: 1.1rem;
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #2c3e50;
+}
+
+/* RadioButtonList ASP.NET */
+asp\:RadioButtonList {
+    display: block;
+    margin-top: 0.5rem;
+}
+
+asp\:ListItem {
+    display: block;
+    margin: 0.4rem 0;
+    padding: 0.4rem 0.6rem;
+    border-radius: 6px;
+    transition: background 0.3s ease;
+    background-color: rgb(205, 117, 255); /* fondo morado pastel */
+}
+
+    asp\:ListItem:hover {
+        background-color: rgb(248, 200, 220); /* hover rosa pastel */
+    }
+
+/* Botones de navegación */
+button {
+    background-color: rgb(205, 117, 255);
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    margin: 0 0.5rem;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+    button:hover {
+        background-color: rgb(180, 90, 230);
+    }
+
+asp\:Button#btnconocer {
+    background-color: rgb(248, 200, 220);
+    color: white;
+    border: none;
+    padding: 0.7rem 1.4rem;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    display: inline-block;
+}
+
+    asp\:Button#btnconocer:hover {
+        background-color: rgb(255, 228, 145);
+        transform: scale(1.03);
+    }
+/* Botón final pastel */
+.btn-final {
+    background-color: rgb(205, 117, 255); /* morado pastel */
+    color: white;
+    border: none;
+    padding: 0.8rem 1.6rem;
+    font-size: 1.1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 6px 14px rgba(205, 117, 255, 0.3);
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+    .btn-final:hover {
+        background-color: rgb(180, 90, 230);
+        transform: scale(1.04);
+    }
+
+/* Resultado emocional */
+.resultado-final {
+    display: block;
+    margin-top: 1rem;
+    font-size: 1.1rem;
+    color: #4a2c4f; /* tono morado oscuro */
+    font-weight: 600;
+    background-color: rgb(248, 200, 220); /* rosa pastel */
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(248, 200, 220, 0.2);
+}
+asp\:Label#lblResultado {
+    display: block;
+    margin-top: 1rem;
+    font-size: 1.1rem;
+    color: #2e7d32;
+    font-weight: 600;
+    background-color: rgb(255, 228, 145); /* fondo amarillo pastel */
+    padding: 0.6rem 1rem;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+/* Animación de entrada */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+asp\:Button#btnconocer {
+    background-color: rgb(205, 117, 255); /* morado pastel */
+    color: white;
+    border: none;
+    padding: 0.8rem 1.6rem;
+    font-size: 1.1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 6px 14px rgba(205, 117, 255, 0.3);
+    transition: background 0.3s ease, transform 0.2s ease;
+    display: inline-block;
+    text-align: center;
+}
+
+    asp\:Button#btnconocer:hover {
+        background-color: rgb(180, 90, 230); /* morado más intenso */
+        transform: scale(1.04);
+    }

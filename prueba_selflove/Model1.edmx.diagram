@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0a542ec4ecde4bb58732f3df19c72a2c" Name="Diagram1">
+        <EntityTypeShape EntityType="SelfLoveModel.Notificaciones" Width="1.5" PointX="3" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SelfLoveModel.OpcionesRespuesta" Width="1.5" PointX="8" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SelfLoveModel.Pacientes" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SelfLoveModel.Pagos" Width="1.5" PointX="3" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SelfLoveModel.PreguntasTest" Width="1.5" PointX="5.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="SelfLoveModel.Sesiones" Width="1.5" PointX="5.25" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SelfLoveModel.Suscripciones" Width="1.5" PointX="3" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SelfLoveModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SelfLoveModel.Terapeutas" Width="1.5" PointX="3" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="SelfLoveModel.Usuarios" Width="1.5" PointX="0.75" PointY="7.25" IsExpanded="true" />
+        <AssociationConnector Association="SelfLoveModel.FK__Notificac__Usuar__01142BA1" ManuallyRouted="false" />
+        <AssociationConnector Association="SelfLoveModel.FK__OpcionesR__Pregu__07C12930" ManuallyRouted="false" />
+        <AssociationConnector Association="SelfLoveModel.FK__Pacientes__Usuar__693CA210" ManuallyRouted="false" />
+        <AssociationConnector Association="SelfLoveModel.FK__Sesiones__Pacien__6E01572D" ManuallyRouted="false" />
+        <AssociationConnector Association="SelfLoveModel.FK__Pagos__UsuarioId__75A278F5" ManuallyRouted="false" />
+        <AssociationConnector Association="SelfLoveModel.FK__Sesiones__Terape__6EF57B66" ManuallyRouted="false" />
+        <AssociationConnector Association="SelfLoveModel.FK__Suscripci__Usuar__7C4F7684" ManuallyRouted="false" />
+        <AssociationConnector Association="SelfLoveModel.FK__Terapeuta__Usuar__6477ECF3" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,278 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SelfLoveModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Notificaciones">
+    <Key>
+      <PropertyRef Name="NotificacionId" />
+    </Key>
+    <Property Name="NotificacionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UsuarioId" Type="Int32" Nullable="false" />
+    <Property Name="Mensaje" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Fecha" Type="DateTime" Precision="3" />
+    <Property Name="Leido" Type="Boolean" />
+    <NavigationProperty Name="Usuarios" Relationship="Self.FK__Notificac__Usuar__01142BA1" FromRole="Notificaciones" ToRole="Usuarios" />
+  </EntityType>
+  <EntityType Name="OpcionesRespuesta">
+    <Key>
+      <PropertyRef Name="OpcionId" />
+    </Key>
+    <Property Name="OpcionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PreguntaId" Type="Int32" Nullable="false" />
+    <Property Name="TextoOpcion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Valor" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="PreguntasTest" Relationship="Self.FK__OpcionesR__Pregu__07C12930" FromRole="OpcionesRespuesta" ToRole="PreguntasTest" />
+  </EntityType>
+  <EntityType Name="Pacientes">
+    <Key>
+      <PropertyRef Name="PacienteId" />
+    </Key>
+    <Property Name="PacienteId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UsuarioId" Type="Int32" Nullable="false" />
+    <Property Name="Edad" Type="Int32" />
+    <Property Name="Genero" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="HistorialMedico" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Usuarios" Relationship="Self.FK__Pacientes__Usuar__693CA210" FromRole="Pacientes" ToRole="Usuarios" />
+    <NavigationProperty Name="Sesiones" Relationship="Self.FK__Sesiones__Pacien__6E01572D" FromRole="Pacientes" ToRole="Sesiones" />
+  </EntityType>
+  <EntityType Name="Pagos">
+    <Key>
+      <PropertyRef Name="PagoId" />
+    </Key>
+    <Property Name="PagoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UsuarioId" Type="Int32" Nullable="false" />
+    <Property Name="Monto" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="MetodoPago" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Fecha" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Usuarios" Relationship="Self.FK__Pagos__UsuarioId__75A278F5" FromRole="Pagos" ToRole="Usuarios" />
+  </EntityType>
+  <EntityType Name="PreguntasTest">
+    <Key>
+      <PropertyRef Name="PreguntaId" />
+    </Key>
+    <Property Name="PreguntaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TextoPregunta" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Categoria" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="OpcionesRespuesta" Relationship="Self.FK__OpcionesR__Pregu__07C12930" FromRole="PreguntasTest" ToRole="OpcionesRespuesta" />
+  </EntityType>
+  <EntityType Name="Sesiones">
+    <Key>
+      <PropertyRef Name="SesionId" />
+    </Key>
+    <Property Name="SesionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PacienteId" Type="Int32" Nullable="false" />
+    <Property Name="TerapeutaId" Type="Int32" Nullable="false" />
+    <Property Name="FechaHora" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Duracion" Type="Int32" Nullable="false" />
+    <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EnlaceVideollamada" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Pacientes" Relationship="Self.FK__Sesiones__Pacien__6E01572D" FromRole="Sesiones" ToRole="Pacientes" />
+    <NavigationProperty Name="Terapeutas" Relationship="Self.FK__Sesiones__Terape__6EF57B66" FromRole="Sesiones" ToRole="Terapeutas" />
+  </EntityType>
+  <EntityType Name="Suscripciones">
+    <Key>
+      <PropertyRef Name="SuscripcionId" />
+    </Key>
+    <Property Name="SuscripcionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UsuarioId" Type="Int32" Nullable="false" />
+    <Property Name="Plan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FechaInicio" Type="DateTime" Precision="3" />
+    <Property Name="FechaFin" Type="DateTime" Precision="3" />
+    <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Usuarios" Relationship="Self.FK__Suscripci__Usuar__7C4F7684" FromRole="Suscripciones" ToRole="Usuarios" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Terapeutas">
+    <Key>
+      <PropertyRef Name="TerapeutaId" />
+    </Key>
+    <Property Name="TerapeutaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UsuarioId" Type="Int32" Nullable="false" />
+    <Property Name="Especialidad" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Certificaciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Experiencia" Type="Int32" />
+    <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Sesiones" Relationship="Self.FK__Sesiones__Terape__6EF57B66" FromRole="Terapeutas" ToRole="Sesiones" />
+    <NavigationProperty Name="Usuarios" Relationship="Self.FK__Terapeuta__Usuar__6477ECF3" FromRole="Terapeutas" ToRole="Usuarios" />
+  </EntityType>
+  <EntityType Name="Usuarios">
+    <Key>
+      <PropertyRef Name="UsuarioId" />
+    </Key>
+    <Property Name="UsuarioId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ApellidoPaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ApellidoMaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Correo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ContrasenaHash" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Telefono" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FechaRegistro" Type="DateTime" Precision="3" />
+    <Property Name="Estado" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Notificaciones" Relationship="Self.FK__Notificac__Usuar__01142BA1" FromRole="Usuarios" ToRole="Notificaciones" />
+    <NavigationProperty Name="Pacientes" Relationship="Self.FK__Pacientes__Usuar__693CA210" FromRole="Usuarios" ToRole="Pacientes" />
+    <NavigationProperty Name="Pagos" Relationship="Self.FK__Pagos__UsuarioId__75A278F5" FromRole="Usuarios" ToRole="Pagos" />
+    <NavigationProperty Name="Suscripciones" Relationship="Self.FK__Suscripci__Usuar__7C4F7684" FromRole="Usuarios" ToRole="Suscripciones" />
+    <NavigationProperty Name="Terapeutas" Relationship="Self.FK__Terapeuta__Usuar__6477ECF3" FromRole="Usuarios" ToRole="Terapeutas" />
+  </EntityType>
+  <Association Name="FK__Notificac__Usuar__01142BA1">
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Notificaciones" Type="Self.Notificaciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="UsuarioId" />
+      </Principal>
+      <Dependent Role="Notificaciones">
+        <PropertyRef Name="UsuarioId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OpcionesR__Pregu__07C12930">
+    <End Role="PreguntasTest" Type="Self.PreguntasTest" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="OpcionesRespuesta" Type="Self.OpcionesRespuesta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PreguntasTest">
+        <PropertyRef Name="PreguntaId" />
+      </Principal>
+      <Dependent Role="OpcionesRespuesta">
+        <PropertyRef Name="PreguntaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Pacientes__Usuar__693CA210">
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Pacientes" Type="Self.Pacientes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="UsuarioId" />
+      </Principal>
+      <Dependent Role="Pacientes">
+        <PropertyRef Name="UsuarioId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Sesiones__Pacien__6E01572D">
+    <End Role="Pacientes" Type="Self.Pacientes" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Sesiones" Type="Self.Sesiones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pacientes">
+        <PropertyRef Name="PacienteId" />
+      </Principal>
+      <Dependent Role="Sesiones">
+        <PropertyRef Name="PacienteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Pagos__UsuarioId__75A278F5">
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Pagos" Type="Self.Pagos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="UsuarioId" />
+      </Principal>
+      <Dependent Role="Pagos">
+        <PropertyRef Name="UsuarioId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Sesiones__Terape__6EF57B66">
+    <End Role="Terapeutas" Type="Self.Terapeutas" Multiplicity="1" />
+    <End Role="Sesiones" Type="Self.Sesiones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Terapeutas">
+        <PropertyRef Name="TerapeutaId" />
+      </Principal>
+      <Dependent Role="Sesiones">
+        <PropertyRef Name="TerapeutaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Suscripci__Usuar__7C4F7684">
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+    <End Role="Suscripciones" Type="Self.Suscripciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="UsuarioId" />
+      </Principal>
+      <Dependent Role="Suscripciones">
+        <PropertyRef Name="UsuarioId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Terapeuta__Usuar__6477ECF3">
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Terapeutas" Type="Self.Terapeutas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="UsuarioId" />
+      </Principal>
+      <Dependent Role="Terapeutas">
+        <PropertyRef Name="UsuarioId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SelfLoveEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Notificaciones" EntityType="Self.Notificaciones" />
+    <EntitySet Name="OpcionesRespuesta" EntityType="Self.OpcionesRespuesta" />
+    <EntitySet Name="Pacientes" EntityType="Self.Pacientes" />
+    <EntitySet Name="Pagos" EntityType="Self.Pagos" />
+    <EntitySet Name="PreguntasTest" EntityType="Self.PreguntasTest" />
+    <EntitySet Name="Sesiones" EntityType="Self.Sesiones" />
+    <EntitySet Name="Suscripciones" EntityType="Self.Suscripciones" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="Terapeutas" EntityType="Self.Terapeutas" />
+    <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
+    <AssociationSet Name="FK__Notificac__Usuar__01142BA1" Association="Self.FK__Notificac__Usuar__01142BA1">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="Notificaciones" EntitySet="Notificaciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OpcionesR__Pregu__07C12930" Association="Self.FK__OpcionesR__Pregu__07C12930">
+      <End Role="PreguntasTest" EntitySet="PreguntasTest" />
+      <End Role="OpcionesRespuesta" EntitySet="OpcionesRespuesta" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Pacientes__Usuar__693CA210" Association="Self.FK__Pacientes__Usuar__693CA210">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="Pacientes" EntitySet="Pacientes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Sesiones__Pacien__6E01572D" Association="Self.FK__Sesiones__Pacien__6E01572D">
+      <End Role="Pacientes" EntitySet="Pacientes" />
+      <End Role="Sesiones" EntitySet="Sesiones" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Pagos__UsuarioId__75A278F5" Association="Self.FK__Pagos__UsuarioId__75A278F5">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="Pagos" EntitySet="Pagos" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Sesiones__Terape__6EF57B66" Association="Self.FK__Sesiones__Terape__6EF57B66">
+      <End Role="Terapeutas" EntitySet="Terapeutas" />
+      <End Role="Sesiones" EntitySet="Sesiones" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Suscripci__Usuar__7C4F7684" Association="Self.FK__Suscripci__Usuar__7C4F7684">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="Suscripciones" EntitySet="Suscripciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Terapeuta__Usuar__6477ECF3" Association="Self.FK__Terapeuta__Usuar__6477ECF3">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="Terapeutas" EntitySet="Terapeutas" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
