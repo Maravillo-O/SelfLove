@@ -26,7 +26,7 @@ function cargarDatosGuardados() {
     }
   }
 }
-
+// Oscar estuvo aqui
 // configurar eventos cuando el DOM esté completamente cargado y cargar página
 document.addEventListener('DOMContentLoaded', function () {
   cargarDatosGuardados();
