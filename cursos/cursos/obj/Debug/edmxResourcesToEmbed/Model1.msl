@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="selfloveModelStoreContainer" CdmEntityContainer="selfloveEntities">
+    <EntitySetMapping Name="Recursos">
+      <EntityTypeMapping TypeName="selfloveModel.Recursos">
+        <MappingFragment StoreEntitySet="Recursos">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="FechaDeSubida" ColumnName="FechaDeSubida" />
+          <ScalarProperty Name="Autor" ColumnName="Autor" />
+          <ScalarProperty Name="NomArchivo" ColumnName="NomArchivo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
