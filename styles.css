@@ -63,6 +63,7 @@ a {
     max-width: 350px;
     position: relative;
     margin: 0 auto;
+    margin-top: 10px;
 }
 
 .header_wrapper .cols_container .left_col .img_container {
